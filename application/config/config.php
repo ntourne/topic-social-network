@@ -361,11 +361,10 @@ $config['proxy_ips'] = '';
  * ASSETS (CSS, JS)
  */
 $config['css_external_files'] = array("http://yui.yahooapis.com/3.10.0/build/cssreset/cssreset-min.css");
-$config['css_files'] = array("bootstrap.min.css", "bootstrap-responsive.min.css", "master.css");
-$config['js_external_files'] = array("http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js");
-$config['js_files'] = array("bootstrap.min.js");
+$config['css_files'] = array("bootstrap.min.css", "offcanvas.css");
+$config['js_external_files'] = array("https://code.jquery.com/jquery-1.10.2.min.js");
+$config['js_files'] = array("bootstrap.min.js", "offcanvas.js");
 $config['fonts'] = array();
-
 
 /*
  * MODULES
