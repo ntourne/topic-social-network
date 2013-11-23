@@ -14,7 +14,7 @@ class User_m extends CI_Model {
 	{
    		$this->db->select('user_id, username, fullname');
    		$this->db->from('topic_users');
-   		$this->db->where('username', $username);
+   		$this->db->where('(username = "' . $username . '" OR email = "' . $username . '")');
    		$this->db->where('password', MD5($password));
    		$this->db->limit(1);
 

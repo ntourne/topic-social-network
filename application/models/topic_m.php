@@ -3,13 +3,13 @@
 class Topic_m extends CI_Model {
 	
 	
-	function add($cat_id, $topic_name, $topic_desc)
+	function insert($topic_name, $topic_desc, $cat_slug, $user_id)
 	{
 		$data = array(
 			'topic_name' => $topic_name,
 			'topic_desc' => $topic_desc,
-			'user_id' => $this->user_m->get_logged_user_id(),
-			'cat_id' => $cat_id,
+            'cat_slug' => $cat_slug,
+			'user_id' => $user_id,
 		    'created_on' => time()
 		);
 		
@@ -23,9 +23,10 @@ class Topic_m extends CI_Model {
 	function get($topic_id)
 	{
 	 	$this->db->select('topic_id, topic_name, topic_desc, topic_topics.user_id, topic_users.username, topic_users.fullname, 
-	 						cat_id, topic_topics.comments_count, topic_topics.followers_count, topic_topics.created_on');
+	 						topic_categories.cat_slug, topic_categories.cat_name as cat_name, topic_topics.comments_count, topic_topics.followers_count, topic_topics.created_on');
    		$this->db->from('topic_topics');
    		$this->db->join('topic_users', 'topic_users.user_id = topic_topics.user_id', 'left');
+        $this->db->join('topic_categories', 'topic_categories.cat_slug = topic_topics.cat_slug', 'left');
    		$this->db->where('topic_id', $topic_id);
    		$this->db->limit(1);
 
@@ -42,9 +43,10 @@ class Topic_m extends CI_Model {
 	function get_all()
 	{
 	 	$this->db->select('topic_id, topic_name, topic_desc, topic_topics.user_id, topic_users.username as user_username, topic_users.fullname as user_fullname, 
-	 						cat_id, topic_topics.comments_count, topic_topics.followers_count, topic_topics.created_on');
+	 						topic_categories.cat_slug, topic_categories.cat_name as cat_name, topic_topics.comments_count, topic_topics.followers_count, topic_topics.created_on');
    		$this->db->from('topic_topics');
    		$this->db->join('topic_users', 'topic_users.user_id = topic_topics.user_id', 'left');
+        $this->db->join('topic_categories', 'topic_categories.cat_slug = topic_topics.cat_slug', 'left');
    		$this->db->order_by('topic_topics.created_on', 'desc'); 
    		$query = $this->db->get();
      	return $query->result();

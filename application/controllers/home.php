@@ -12,6 +12,7 @@ class Home extends MY_Controller {
  	public function index()
 	{
         $this->add_data('topics', $this->topic_m->get_all());
+        $this->add_data('categories', $this->category_m->get_all());
         $this->template->display('home', $this->data);
 	}
 	

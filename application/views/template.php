@@ -33,12 +33,10 @@
 
 <div class="container">
 
-    <?php $this->load->view('template_header.php', array('title' => $title, 'logged_in' => $logged_in, 'username' => $username)) ?>
-
-    <?php $this->load->view('modals/topic_create.php') ?>
+    <?php $this->load->view('template_header.php', array('title' => $title)) ?>
 
     <div class="row">
-        <div class="col-sm-9">
+        <div class="col-sm-8">
 
             <?php
             if ($page)
@@ -48,76 +46,31 @@
             ?>
         </div>
 
-        <div class="col-sm-3">
-            SIDEBAR
-        </div>
-    </div>
+        <div class="col-sm-4">
 
+            <?php if ($logged_in): ?>
+                <?php $this->load->view('modals/topic_create.php') ?>
+            <?php endif; ?>
 
-    <div class="row row-offcanvas row-offcanvas-right">
-
-        <div class="col-xs-12 col-sm-9">
-            <p class="pull-right visible-xs">
-                <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-            </p>
-            <div class="jumbotron">
-                <h1>Hello, world!</h1>
-                <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
-            </div>
             <div class="row">
-                <div class="col-6 col-sm-6 col-lg-4">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                </div><!--/span-->
-                <div class="col-6 col-sm-6 col-lg-4">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                </div><!--/span-->
-                <div class="col-6 col-sm-6 col-lg-4">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                </div><!--/span-->
-                <div class="col-6 col-sm-6 col-lg-4">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                </div><!--/span-->
-                <div class="col-6 col-sm-6 col-lg-4">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                </div><!--/span-->
-                <div class="col-6 col-sm-6 col-lg-4">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                </div><!--/span-->
-            </div><!--/row-->
-        </div><!--/span-->
-
-        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-            <div class="list-group">
-                <a href="#" class="list-group-item active">Link</a>
-                <a href="#" class="list-group-item">Link</a>
-                <a href="#" class="list-group-item">Link</a>
-                <a href="#" class="list-group-item">Link</a>
-                <a href="#" class="list-group-item">Link</a>
-                <a href="#" class="list-group-item">Link</a>
-                <a href="#" class="list-group-item">Link</a>
-                <a href="#" class="list-group-item">Link</a>
-                <a href="#" class="list-group-item">Link</a>
-                <a href="#" class="list-group-item">Link</a>
+                <div class="col-sm-12 col-md-12">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h4>What is the<b>open</b>wall?</h4>
+                            It's a place to share comments around topics. Start creating <a href="<?php echo base_url('topic/create') ?>">your first topic</a>.
+                            <br/><br/>
+                            <p>&copy; 2014 the<b>open</b>wall</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div><!--/span-->
+
+        </div>
     </div><!--/row-->
 
-    <hr>
 
     <footer>
-        <p>&copy; TopicSocialNetwork 2014</p>
+
     </footer>
 
 </div><!--/.container-->

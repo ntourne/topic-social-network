@@ -54,4 +54,11 @@ class Template extends CI_Model {
 		
 		$this->load->view('template', $this->data);
 	}
+
+
+    function add_data($key, $value)
+    {
+        $this->data[$key] = $value;
+    }
+
 }
