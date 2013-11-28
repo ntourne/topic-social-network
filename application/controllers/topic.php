@@ -70,6 +70,17 @@ class Topic extends MY_Controller {
  			redirect('home', 'refresh');
  	}
 
+
+
+    function add_comment()
+    {
+        $topic_id = $this->input->post('topic_id');
+        $text = clean_input($this->input->post('text'));
+        $user_id = $this->get_logged_userid();
+        $comment_id = $this->comment_m->insert($topic_id, $text, $user_id);
+        $comment = $this->comment_m->get($comment_id);
+        echo $this->template->comment($comment);
+    }
 }
 
 ?>

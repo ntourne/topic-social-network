@@ -61,4 +61,10 @@ class Template extends CI_Model {
         $this->data[$key] = $value;
     }
 
+
+    function comment($comment = NULL)
+    {
+        $this->load->view('sections/comment.php', array("comment" => $comment));
+    }
+
 }

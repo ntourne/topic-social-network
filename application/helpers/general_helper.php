@@ -22,3 +22,16 @@ function ago($time)
 
     return "$difference $periods[$j] ago ";
 }
+
+
+
+function clean_input($input) {
+    $search = array(
+        '@<script[^>]*?>.*?</script>@si',   /* strip out javascript */
+        '@<[\/\!]*?[^<>]*?>@si',            /* strip out HTML tags */
+        '@<style[^>]*?>.*?</style>@siU',    /* strip style tags properly */
+        '@<![\s\S]*?--[ \t\n\r]*>@'         /* strip multi-line comments */
+    );
+
+    return preg_replace($search, '', $input);
+}

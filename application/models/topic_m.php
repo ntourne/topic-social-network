@@ -35,7 +35,7 @@ class Topic_m extends CI_Model {
    		if($query->num_rows() == 1)
         {
             $topic = $query->row();
-            $topic->comments = $this->get_comments($topic_id);
+            $topic->comments = $this->comment_m->get_all($topic_id);
             return $topic;
         }
 
@@ -56,16 +56,6 @@ class Topic_m extends CI_Model {
    		return $this->db->get()->result();
 	}
 
-
-    function get_comments($topic_id)
-    {
-        $this->db->select('comment_id, topic_id, topic_comments.user_id, topic_users.username as user_username, topic_users.fullname as user_fullname, topic_users.email as user_email,
-                            text, topic_comments.created_on');
-        $this->db->from('topic_comments');
-        $this->db->join('topic_users', 'topic_users.user_id = topic_comments.user_id', 'left');
-        $this->db->order_by('topic_comments.created_on', 'asc');
-        return $this->db->get()->result();
-    }
-	
 }
+
 ?>

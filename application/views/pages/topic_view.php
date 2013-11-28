@@ -10,60 +10,44 @@ by <a href="<?echo base_url('user/'.$topic->username) ?>" class="bold"><?php ech
 
 
 <div class="cmt-container" >
-    <?php foreach($topic->comments as $comment): ?>
-        <?php
-        $default = "mm";
-        $size = 35;
-        $grav_url = "http://www.gravatar.com/avatar/".md5(strtolower(trim($comment->user_email)))."?d=".$default."&s=".$size;
-        ?>
 
-        <div class="cmt-cnt">
-            <img src="<?php echo $grav_url; ?>" />
-            <div class="thecom">
-                <h5><?php echo $comment->user_fullname; ?></h5><span data-utime="<?php echo $comment->created_on ?>" class="com-dt"><?php echo ago($comment->created_on) ?></span>
-                <br/>
-                <p>
-                    <?php echo $comment->text; ?>
-                </p>
-            </div>
-        </div><!-- end "cmt-cnt" -->
+    <?php if (isset($logged_user) && $logged_user): ?>
 
-        <hr/>
+        <div class="new-com-bt">
+            <span>Write a comment ...</span>
+        </div>
+        <div class="new-com-cnt">
 
-    <?php endforeach; ?>
+            <b><?php echo $logged_user['fullname'] ?></b>
+            <textarea class="the-new-com" id="text" name="text"></textarea>
+            Share on twitter<br/>
+            Share on facebook<br/>
+            <button class="btn btn-primary btn-oldstyle pull-right create-comment bt-add-com">
+                <span class="glyphicon glyphicon-check"></span> Comment
+            </button>
+        </div>
+        <div class="clear"></div>
+    <?php endif; ?>
 
-
-    <div class="new-com-bt">
-        <span>Write a comment ...</span>
+    <div class="comments">
+        <?php foreach($topic->comments as $comment): ?>
+            <?php
+                $this->load->view('sections/comment.php', array("comment" => $comment));
+            ?>
+            <hr/>
+        <?php endforeach; ?>
     </div>
-    <div class="new-com-cnt">
 
-        <b><?php echo $logged_user['fullname'] ?></b>
-        <?php
-        /*
-        <input type="text" id="name-com" name="name-com" value="" placeholder="Your name" />
-        <input type="text" id="mail-com" name="mail-com" value="" placeholder="Your e-mail address" />
-        */
-        ?>
-        <textarea class="the-new-com" id="text" name="text"></textarea>
-        Share on twitter<br/>
-        Share on facebook<br/>
-        <button class="btn btn-primary btn-oldstyle pull-right create-comment bt-add-com" data-toggle="modal" data-target="#create-topic-modal">
-            <span class="glyphicon glyphicon-check"></span> Comment
-        </button>
-        <?php /*
-        <div class="bt-add-com">Post comment</div>
-        <div class="bt-cancel-com">Cancel</div>
-        */ ?>
-    </div>
-    <div class="clear"></div>
-</div><!-- end of comments container "cmt-container" -->
+</div>
 
 
 
 <script type="text/javascript">
     $(function(){
-        //alert(event.timeStamp);
+
+        // refresh time ago
+        jQuery(".timeago").timeago();
+
         $('.new-com-bt').click(function(event){
             $(this).hide();
             $('.new-com-cnt').show();
@@ -80,31 +64,27 @@ by <a href="<?echo base_url('user/'.$topic->username) ?>" class="bold"><?php ech
         /* on clic  on the cancel button */
         $('.bt-cancel-com').click(function(){
             $('.the-new-com').val('');
-            $('.new-com-cnt').fadeOut('fast', function(){
-                $('.new-com-bt').fadeIn('fast');
+            $('.new-com-cnt').hide(function(){
+                $('.new-com-bt').show();
             });
         });
 
         // on post comment click
         $('.bt-add-com').click(function(){
-            var theCom = $('.the-new-com');
-            var theName = $('#name-com');
-            var theMail = $('#mail-com');
+            var text = $('#text');
 
-            if( !theCom.val()){
+            if (!text.val()) {
                 alert('You need to write a comment!');
-            }else{
+            } else{
                 $.ajax({
                     type: "POST",
-                    url: "ajax/add-comment.php",
-                    data: 'act=add-com&id_post='+<?php echo $topic->topic_id ?>+'&name='+theName.val()+'&email='+theMail.val()+'&comment='+theCom.val(),
+                    url: "<?php echo base_url('topic/add_comment') ?>",
+                    data: 'topic_id='+<?php echo $topic->topic_id ?>+'&text='+text.val(),
                     success: function(html){
-                        theCom.val('');
-                        theMail.val('');
-                        theName.val('');
-                        $('.new-com-cnt').hide('fast', function(){
-                            $('.new-com-bt').show('fast');
-                            $('.new-com-bt').before(html);
+                        text.val('');
+                        $('.new-com-cnt').hide(function(){
+                            $('.new-com-bt').show();
+                            $('.comments').prepend(html);
                         })
                     }
                 });
@@ -113,5 +93,3 @@ by <a href="<?echo base_url('user/'.$topic->username) ?>" class="bold"><?php ech
 
     });
 </script>
-
-<?php /* var_dump($topic) */ ?>
