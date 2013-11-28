@@ -31,6 +31,17 @@
 
 <body>
 
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<?php foreach($js_external_files as $js_file):  ?>
+    <script type="text/javascript" src="<?php echo $js_file ?>"></script>
+<?php endforeach ?>
+
+<?php foreach($js_files as $js_file):  ?>
+    <script type="text/javascript" src="<?php echo base_url() ?>assets/js/<?php echo $js_file ?>"></script>
+<?php endforeach ?>
+
 <div class="container">
 
     <?php $this->load->view('template_header.php', array('title' => $title)) ?>
@@ -74,19 +85,6 @@
     </footer>
 
 </div><!--/.container-->
-
-
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<?php foreach($js_external_files as $js_file):  ?>
-    <script type="text/javascript" src="<?php echo $js_file ?>"></script>
-<?php endforeach ?>
-
-<?php foreach($js_files as $js_file):  ?>
-    <script type="text/javascript" src="<?php echo base_url() ?>assets/js/<?php echo $js_file ?>"></script>
-<?php endforeach ?>
 
 </body>
 </html>

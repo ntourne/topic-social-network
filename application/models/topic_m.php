@@ -22,7 +22,7 @@ class Topic_m extends CI_Model {
 	
 	function get($topic_id)
 	{
-	 	$this->db->select('topic_id, topic_name, topic_desc, topic_topics.user_id, topic_users.username, topic_users.fullname, 
+	 	$this->db->select('topic_id, topic_name, topic_desc, topic_topics.user_id, topic_users.username, topic_users.fullname as user_fullname,
 	 						topic_categories.cat_slug, topic_categories.cat_name as cat_name, topic_topics.comments_count, topic_topics.followers_count, topic_topics.created_on');
    		$this->db->from('topic_topics');
    		$this->db->join('topic_users', 'topic_users.user_id = topic_topics.user_id', 'left');
@@ -31,9 +31,14 @@ class Topic_m extends CI_Model {
    		$this->db->limit(1);
 
    		$query = $this->db->get();
-   		
+
    		if($query->num_rows() == 1)
-     		return $query->result();
+        {
+            $topic = $query->row();
+            $topic->comments = $this->get_comments($topic_id);
+            return $topic;
+        }
+
    		else
      		return NULL;
 	}
@@ -48,9 +53,19 @@ class Topic_m extends CI_Model {
    		$this->db->join('topic_users', 'topic_users.user_id = topic_topics.user_id', 'left');
         $this->db->join('topic_categories', 'topic_categories.cat_slug = topic_topics.cat_slug', 'left');
    		$this->db->order_by('topic_topics.created_on', 'desc'); 
-   		$query = $this->db->get();
-     	return $query->result();
+   		return $this->db->get()->result();
 	}
+
+
+    function get_comments($topic_id)
+    {
+        $this->db->select('comment_id, topic_id, topic_comments.user_id, topic_users.username as user_username, topic_users.fullname as user_fullname, topic_users.email as user_email,
+                            text, topic_comments.created_on');
+        $this->db->from('topic_comments');
+        $this->db->join('topic_users', 'topic_users.user_id = topic_comments.user_id', 'left');
+        $this->db->order_by('topic_comments.created_on', 'asc');
+        return $this->db->get()->result();
+    }
 	
 }
 ?>
