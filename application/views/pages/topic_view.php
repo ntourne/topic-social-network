@@ -46,7 +46,9 @@ by <a href="<?echo base_url('user/'.$topic->username) ?>" class="bold"><?php ech
         */
         ?>
         <textarea class="the-new-com" id="text" name="text"></textarea>
-        <button class="btn btn-primary btn-oldstyle create-comment bt-add-com" data-toggle="modal" data-target="#create-topic-modal">
+        Share on twitter<br/>
+        Share on facebook<br/>
+        <button class="btn btn-primary btn-oldstyle pull-right create-comment bt-add-com" data-toggle="modal" data-target="#create-topic-modal">
             <span class="glyphicon glyphicon-check"></span> Comment
         </button>
         <?php /*
