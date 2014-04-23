@@ -49,6 +49,7 @@ by <a href="<?echo base_url('user/'.$topic->username) ?>" class="bold"><?php ech
         jQuery(".timeago").timeago();
 
         $('.new-com-bt').click(function(event){
+            alert($(this).parents('data-topic_id').data('topic_id'));
             $(this).hide();
             $('.new-com-cnt').show();
             $('#text').focus();

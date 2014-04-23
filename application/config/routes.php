@@ -41,8 +41,18 @@
 $route['default_controller'] = "home";
 $route['404_override'] = '';
 
-// $route['topic/(:any)'] = "topic/view/$1";
-$route['topic/:num'] = "topic/view/$1";
+// $route['topic/:num'] = "topic/view/$1";
+
+$route['api/v1/topics']									= 'api_v1/topic/list';
+$route['api/v1/topic/(:any)']							= 'api_v1/topic/get/$1';
+
+$route['api/v1/users']									= 'api_v1/user/list';
+$route['api/v1/user/(:any)']							= 'api_v1/user/get/$1';
+$route['api/v1/user/follow/(:any)']					    = 'api_v1/user/follow/$1';
+$route['api/v1/user/unfollow/(:any)']					= 'api_v1/user/unfollow/$1';
+
+$route['api/v1/(:any)']									= 'api_v1/$1';
+
 
 
 /* End of file routes.php */

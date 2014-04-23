@@ -28,6 +28,7 @@ class Comment_m extends CI_Model {
                             text, topic_comments.created_on');
         $this->db->from('topic_comments');
         $this->db->join('topic_users', 'topic_users.user_id = topic_comments.user_id', 'left');
+        $this->db->where('topic_id', $topic_id);
         $this->db->order_by('topic_comments.created_on', 'desc');
         return $this->db->get()->result();
     }

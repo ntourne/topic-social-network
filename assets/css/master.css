@@ -1,8 +1,8 @@
 /* overwrite bootstrap */
 .container { width: 1010px }
+/* body { background-color: #EDEEEF; } */
 
 /* general */
-a:hover { text-decoration: none; }
 .bold { font-weight: bold }
 
 /* home */
@@ -22,6 +22,12 @@ a:hover { text-decoration: none; }
 .topics-list .info a { font-weight: bold; color: #828282; }
 
 
+
+.topic-view { background-color: #ffffff; padding: 7px 3px 7px 0px; margin-bottom: 6px; border-bottom: 1px solid #EEEEEE; }
+.topic-view .cat { margin-bottom: 6px; color: #828282; }
+.topic-view .cat .timestamp { font-size: 11px; }
+.topic-view .name { font-weight: bold; }
+.topic-view .desc { font-size: 14px; margin-bottom: 5px; padding-left: 7px; font-weight: normal; }
 
 /* btn old style */
 

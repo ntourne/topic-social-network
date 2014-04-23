@@ -10,34 +10,64 @@
 
 <div class="media">
     <?php foreach($topics as $topic): ?>
-        <div class="media-body topics-list">
-            <div class="cat">
-                <?php if (!empty($topic->cat_name)): ?>
-                    Posted on <a href="<?php echo base_url('search?cat='.$topic->cat_slug) ?>" class="bold"><?php echo $topic->cat_name ?></a>
-                <?php endif; ?>
-                by <a href="<?echo base_url('user/'.$topic->user_username) ?>" class="bold"><?php echo $topic->user_fullname ?></a>,
-                <span class="timestamp timeago" title="<?php echo date('c', $topic->created_on); ?>"><?php echo ago($topic->created_on) ?></span>
-            </div>
-            <h4 class="media-heading name"><a href="<?php echo base_url('topic/'.$topic->topic_id) ?>"><?php echo $topic->topic_name ?></a></h4>
-            <div class="desc"><?php echo $topic->topic_desc ?></div>
-            <div class="info">
-                <a href="#">Like</a> -
-                <a href="#">Comment</a> -
-                <a href="#">Share</a> -
-                <?php echo $topic->followers_count ?> people talking about this
-            </div>
-        </div>
-        <hr/>
+        <?php $this->load->view('sections/topic.php', array('topic' => $topic)) ?>
     <?php endforeach; ?>
 </div>
 
 
 
 <script type="text/javascript">
+
     $(function(){
 
         // refresh time ago
         jQuery(".timeago").timeago();
+
+        $('.new-com-bt').click(function(event){
+            var topic_view = $(this).parents('.topic-view'); // .data('topic_id'));
+            topic_view.find('.new-com-cnt').show();
+            $(this).hide();
+            topic_view.find('.text').focus();
+            // $('.new-com-cnt').show();
+            // $('#text').focus();
+        });
+
+        /* when start writing the comment activate the "add" button */
+        $('.the-new-com').bind('input propertychange', function() {
+            $(".bt-add-com").css({opacity:0.6});
+            var checklength = $(this).val().length;
+            if(checklength){ $(".bt-add-com").css({opacity:1}); }
+        });
+
+        /* on clic  on the cancel button */
+        $('.bt-cancel-com').click(function(){
+            $('.the-new-com').val('');
+            $('.new-com-cnt').hide(function(){
+                $('.new-com-bt').show();
+            });
+        });
+
+        // on post comment click
+        $('.bt-add-com').click(function(){
+            var text = $('#text');
+
+            if (!text.val()) {
+                alert('You need to write a comment!');
+            } else{
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo base_url('topic/add_comment') ?>",
+                    data: 'topic_id='+<?php echo $topic->topic_id ?>+'&text='+text.val(),
+                    success: function(html){
+                        text.val('');
+                        $('.new-com-cnt').hide(function(){
+                            $('.new-com-bt').show();
+                            $('.comments').prepend(html);
+                        })
+                    }
+                });
+            }
+        });
 
     });
 </script>
