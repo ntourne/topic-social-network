@@ -8,7 +8,7 @@ class User_m extends CI_Model {
 		return $session_data['user_id'];
 	}
 
-    function users()
+    function get_all()
     {
         $this->db->select('user_id, username, fullname');
         $this->db->from('topic_users');
@@ -16,11 +16,16 @@ class User_m extends CI_Model {
     }
 
 
-    function user($user_id)
+    function get($param)
     {
         $this->db->select('user_id, username, fullname');
         $this->db->from('topic_users');
-        $this->db->where('user_id', $user_id);
+        if (is_numeric($param))
+            $this->db->where('user_id', $param);
+        elseif (filter_var($param, FILTER_VALIDATE_EMAIL))
+            $this->db->where('email', $param);
+        else
+            $this->db->where('username', $param);
         $this->db->limit(1);
 
         $query = $this->db->get();
@@ -28,13 +33,30 @@ class User_m extends CI_Model {
         if($query->num_rows() == 1)
         {
             return $query->row();
-            return $topic;
         }
         else
             return NULL;
     }
 
-	
+
+
+    function get_user_id($username)
+    {
+        $this->db->select('user_id');
+        $this->db->from('topic_users');
+        $this->db->where('username', $username);
+        $this->db->limit(1);
+
+        $query = $this->db->get();
+
+        if($query->num_rows() == 1)
+        {
+            return $query->row()->user_id;
+        }
+        else
+            return NULL;
+    }
+
 	function login($username, $password)
 	{
    		$this->db->select('user_id, username, fullname');
@@ -44,12 +66,12 @@ class User_m extends CI_Model {
    		$this->db->limit(1);
 
    		$query = $this->db->get();
-   		
+
    		if($query->num_rows() == 1)
      		return $query->result();
    		else
      		return NULL;
 	}
-	
+
 }
 ?>

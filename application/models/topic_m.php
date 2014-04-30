@@ -20,7 +20,7 @@ class Topic_m extends CI_Model {
 	}
 
 	
-	function get($topic_id)
+	function get($topic_id, $comments = TRUE)
 	{
 	 	$this->db->select('topic_id, topic_name, topic_desc, topic_topics.user_id, topic_users.username, topic_users.fullname as user_fullname,
 	 						topic_categories.cat_slug, topic_categories.cat_name as cat_name, topic_topics.comments_count, topic_topics.followers_count, topic_topics.created_on');
@@ -35,7 +35,7 @@ class Topic_m extends CI_Model {
    		if($query->num_rows() == 1)
         {
             $topic = $query->row();
-            $topic->comments = $this->comment_m->get_all($topic_id);
+            $topic->comments = ($comments) ? $this->comment_m->get_all($topic_id) : NULL;
             return $topic;
         }
 

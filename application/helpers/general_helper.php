@@ -25,7 +25,8 @@ function ago($time)
 
 
 
-function clean_input($input) {
+function clean_input($input)
+{
     $search = array(
         '@<script[^>]*?>.*?</script>@si',   /* strip out javascript */
         '@<[\/\!]*?[^<>]*?>@si',            /* strip out HTML tags */
@@ -34,4 +35,13 @@ function clean_input($input) {
     );
 
     return preg_replace($search, '', $input);
+}
+
+
+/**
+ * Generate a random value
+ */
+function generate_token()
+{
+    return md5(uniqid(rand(), true));
 }

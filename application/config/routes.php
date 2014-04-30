@@ -44,10 +44,12 @@ $route['404_override'] = '';
 // $route['topic/:num'] = "topic/view/$1";
 
 $route['api/v1/topics']									= 'api_v1/topic/list';
+$route['api/v1/topic/insert']							= 'api_v1/topic/insert';
 $route['api/v1/topic/(:any)']							= 'api_v1/topic/get/$1';
 
 $route['api/v1/users']									= 'api_v1/user/list';
 $route['api/v1/user/(:any)']							= 'api_v1/user/get/$1';
+$route['api/v1/user/test']							    = 'api_v1/user/test';
 $route['api/v1/user/follow/(:any)']					    = 'api_v1/user/follow/$1';
 $route['api/v1/user/unfollow/(:any)']					= 'api_v1/user/unfollow/$1';
 

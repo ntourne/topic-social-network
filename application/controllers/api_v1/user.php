@@ -5,13 +5,13 @@
  *
  * This class is used to manage all methods related with User
  *
- * @author		Phil Sturgeon
+ * @author		Nicolas Tourne
  */
 
 // This can be removed if you use __autoload() in config.php OR use Modular Extensions
-require APPPATH.'/libraries/REST_Controller.php';
+require APPPATH.'controllers/api_v1/Api.php';
 
-class User extends REST_Controller
+class User extends Api
 {
 
     /**
@@ -19,7 +19,7 @@ class User extends REST_Controller
      */
     function list_get()
     {
-        $this->response($this->user_m->users(), 200);
+        $this->response($this->user_m->get_all(), 200);
     }
 
 
@@ -29,7 +29,11 @@ class User extends REST_Controller
      */
     function get_get($user_id)
     {
-        $this->response($this->user_m->user($user_id), 200);
+        $user =  $this->user_m->get($user_id);
+        if ($user)
+            $this->response($user, 200);
+        else
+            $this->response($user, 404);
     }
 
 
@@ -54,6 +58,13 @@ class User extends REST_Controller
     {
         // TODO
         $this->response(NULL, 200);
+    }
+
+
+    function test_get()
+    {
+        $user_id = $this->user_m->get_user_id("nico");
+        $this->response($user_id, 200);
     }
 
 }

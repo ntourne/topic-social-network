@@ -5,17 +5,21 @@
  *
  * This class is used to manage all methods related with Topic
  *
- * @author		Phil Sturgeon
+ * @author		Nicolas Tourne
  */
 
 // This can be removed if you use __autoload() in config.php OR use Modular Extensions
-require APPPATH.'/libraries/REST_Controller.php';
+require APPPATH.'controllers/api_v1/Api.php';
 
-class Topic extends REST_Controller
+class Topic extends Api
 {
 
     /**
-     * Return a list of topics
+     * @description Login a user. It returns an authtoken
+     * @method      POST
+     * @params      username [string], password [string]
+     * @route       /auth/login
+     * @return      type="json"
      */
     function list_get()
     {
@@ -36,17 +40,22 @@ class Topic extends REST_Controller
     /**
      * Create a new topic
      */
-    function insert_post()
+    function new_post()
     {
         $topic_name = $this->post('topic_name');
         $topic_desc = $this->post('topic_desc');
         $cat_slug = $this->post('cat_slug');
-        $user_id = 1; // TODO replace by logged-in user
+        $user_id = $this->get_auth_user_id(); // TODO replace by logged-in user
 
-        if ($this->topic_m->insert($topic_name, $topic_desc, $cat_slug, $user_id) != NULL)
-            $this->response(array("response" => "ok"), 201);
+        $topic_id = $this->topic_m->insert($topic_name, $topic_desc, $cat_slug, $user_id);
+
+        if ($topic_id)
+        {
+            $topic = $this->topic_m->get($topic_id);
+            $this->response($topic, 201);
+        }
         else
-            $this->response(array("response" => "ok"), 403);
+            $this->response(NULL, 403);
     }
 
 
@@ -59,7 +68,7 @@ class Topic extends REST_Controller
         $topic_name = $this->post('topic_name');
         $topic_desc = $this->post('topic_desc');
         $cat_slug = $this->post('cat_slug');
-        $user_id = 1; // TODO replace by logged-in user
+        $user_id = $this->get_auth_user_id();
 
         $this->response(NULL, 200);
     }
@@ -122,7 +131,7 @@ class Topic extends REST_Controller
      * @param $user_id
      * @param $comment
      */
-    function comment_post($topic_id, $user_id, $comment)
+    function newcomment($topic_id, $user_id, $comment)
     {
         $this->response(NULL, 200);
     }

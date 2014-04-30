@@ -21,6 +21,17 @@ CREATE TABLE IF NOT EXISTS `topic_users` (
 
 INSERT INTO topic_users VALUES (null, 'demo', 'nicotourne@gmail.com', 'Nicolas Tourne', 'fe01ce2a7fbac8fafaed7c982a04e229', 1331203920);
 
+
+DROP TABLE IF EXISTS `topic_authtokens`;
+CREATE TABLE IF NOT EXISTS `topic_authtokens` (
+  `authtoken_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `authtoken` varchar(255) DEFAULT NULL,
+  `expiration` varchar(60) DEFAULT NULL,
+  PRIMARY KEY (`authtoken_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
 DROP TABLE IF EXISTS `topic_topics`;
 CREATE TABLE IF NOT EXISTS `topic_topics` (
   `topic_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
