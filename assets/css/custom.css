@@ -1,0 +1,216 @@
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 13px;
+    background-color: #F3F4F6;
+}
+
+a {
+    color: #19558d;
+}
+
+/* nav bar */
+.navbar {
+    background-color: #A82400;
+}
+.navbar .navbar-brand {
+    color: #F6F6DF !important;
+    font-size: 24px;
+}
+.navbar .navbar-nav>li>a {
+    color: #F6F6DF !important;
+    font-weight: bold;
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+    background-color: #721800;
+}
+.navbar .navbar-nav .dropdown-menu {
+    font-size: 13px;
+}
+.navbar button {
+    font-size: 13px;
+}
+
+.navbar-form .q {
+    font-size: 14px;
+    min-width: 290px;
+}
+
+.page {
+    margin-top: 45px;
+}
+
+.page .page-content {
+    background-color: #ffffff;
+    border-radius: 7px;
+}
+
+
+/* menu */
+.menu {
+    font-size: 16px;
+    font-weight: bold;
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    margin-top: 30px;
+    padding: 20px 0 5px 5px;
+    z-index: 1030;
+}
+.menu a {
+    font-weight: normal;
+    margin-right: 10px;
+}
+.menu a:hover {
+    text-decoration: none;
+}
+.menu a.active {
+    font-weight: bold;
+    /* border-bottom: 2px solid red; */
+}
+
+/* topic list */
+
+.topics-menu {
+    padding: 15px 0 5px 0;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid #cccccc;
+}
+.topics-menu a {
+    font-weight: normal;
+    margin-right: 10px;
+}
+.topics-menu a:hover {
+    text-decoration: none;
+}
+.topics-menu a.active {
+    font-weight: bold;
+    /* border-bottom: 2px solid red; */
+}
+
+.topic-list .media {
+    /* background-color: #ffffff; */
+    padding: 9px 10px 9px 0px;
+    /* border: 1px solid #cccccc; */
+    /* border-radius: 5px; */
+    margin-top: 8px;
+    border-bottom: 1px solid #EEEEEE;
+}
+.topic-list .categories {
+    color: #8F8F8F;
+    font-size: 12px;
+}
+.topic-list .categories a {
+    font-weight: bold;
+    color: #8F8F8F;
+}
+.topic-list .categories .ago {
+    padding-left: 15px;
+}
+.topic-list h4 {
+    margin-top: 5px;
+    font-size: 16px;
+}
+.topic-list h4 a {
+    color: #19558d;
+    font-weight: bold;
+}
+.topic-list .desc {
+    font-size: 14px;
+    padding-bottom: 5px;
+}
+.topic-list .info {
+    margin-top: 5px;
+    padding-top: 4px;
+}
+.topic-list .info .glyphicon {
+    font-size: 14px;
+    padding-right: 10px;
+}
+.topic-list .info a {
+    color: #19558d;
+}
+.topic-list .info .separator {
+    color: #dfdfdf;
+}
+
+/* Space out content a bit */
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+/* Custom page header */
+.header {
+    border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+    padding-bottom: 19px;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+}
+
+/* Custom page footer */
+.footer {
+    padding-top: 19px;
+    color: #777;
+    border-top: 1px solid #e5e5e5;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+    .container {
+        max-width: 890px;
+    }
+}
+.container-narrow > hr {
+    margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+    padding: 14px 24px;
+    font-size: 21px;
+}
+
+/* Supporting marketing content */
+.marketing {
+    margin: 40px 0;
+}
+.marketing p + h4 {
+    margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    /* Remove the padding we set earlier */
+    .header,
+    .marketing,
+    .footer {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    /* Space out the masthead */
+    .header {
+        margin-bottom: 30px;
+    }
+    /* Remove the bottom border on the jumbotron for visual effect */
+    .jumbotron {
+        border-bottom: 0;
+    }
+}
