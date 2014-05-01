@@ -1,7 +1,7 @@
 body {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif,Arial;
     font-size: 13px;
-    background-color: #F3F4F6;
+    /* background-color: #F3F4F6; */
 }
 
 a {
