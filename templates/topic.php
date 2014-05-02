@@ -124,7 +124,18 @@
             </div>
             */ ?>
 
-            <div class="col-lg-8 page-content">
+            <div class="col-lg-2 page-content">
+                <div class="menu-sidebar">
+                    <ul>
+                        <li><a href="#" class="active">Topics</a></li>
+                        <li><a href="#">Browse</a></li>
+                        <li><a href="#">Favorites</a></li>
+                        <li><a href="#">Suggestions</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-7 page-content">
 
                 <div class="topics-menu">
                     <a href="#" class="active">Topics</a>
@@ -163,7 +174,7 @@
 
                 </ul>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
 
             </div>
         </div>

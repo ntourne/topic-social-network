@@ -1,7 +1,7 @@
 body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif,Arial;
     font-size: 13px;
-    background-color: #F3F4F6;
+    /* background-color: #F3F4F6; */
 }
 
 a {
@@ -69,8 +69,12 @@ a {
     /* border-bottom: 2px solid red; */
 }
 
-/* topic list */
+/* sidebar */
+.menu-sidebar ul {
+    list-style: none outside none;
+}
 
+/* topic list */
 .topics-menu {
     padding: 15px 0 5px 0;
     font-size: 16px;
