@@ -49,6 +49,16 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#home">Home</a></li>
                         <li class="dropdown">
+                            <a href="#profile" class="dropdown-toggle" data-toggle="dropdown">Notifications <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Notification #1</a></li>
+                                <li><a href="#">Notification #2</a></li>
+                                <li><a href="#">Notification #3</a></li>
+                                <li><a href="#">Notification #4</a></li>
+                                <li><a href="#">Notification #5</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
                             <a href="#profile" class="dropdown-toggle" data-toggle="dropdown">Nicol&aacute;s <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">My Account</a></li>
@@ -74,19 +84,19 @@
 
         <?php
             $topics = array();
-            $topics[] = array("cat1" => "Sports", "cat2" => "Champions League", "title" => "Quien se ve a llevar la copa?", "desc" => "La proxima semana tendremos la gran final del mejor torneo del mundo. Quien es su favorito?",
-                                "author" => "ESPN", "people_follow" => 10);
+            $topics[] = array("cat1" => "Sports", "cat2" => "Champions League", "title" => "Quien se va a llevar la copa?", "desc" => "La proxima semana tendremos la gran final del mejor torneo del mundo. Quien es su favorito?",
+                                "author" => "Quique Wolff", "people_follow" => 10);
             $topics[] = array("cat1" => "Sports", "cat2" => "Copa Libertadores", "title" => "San Lorenzo a cuartos de final. Este es el a&ntilde;o donde se lleva la copa?", "desc" => "La proxima semana tendremos la gran final del mejor torneo del mundo. Quien es su favorito?",
                 "author" => "ESPN", "people_follow" => 10);
-            $topics[] = array("cat1" => "Sports", "cat2" => "Champions League", "title" => "Quien se ve a llevar la copa?", "desc" => "La proxima semana tendremos la gran final del mejor torneo del mundo. Quien es su favorito?",
-                "author" => "ESPN", "people_follow" => 10);
-            $topics[] = array("cat1" => "Sports", "cat2" => "Copa Libertadores", "title" => "San Lorenzo a cuartos de final. Este es el a&ntilde;o donde se lleva la copa?", "desc" => "La proxima semana tendremos la gran final del mejor torneo del mundo. Quien es su favorito?",
-                "author" => "ESPN", "people_follow" => 10);
-            $topics[] = array("cat1" => "Sports", "cat2" => "Champions League", "title" => "Quien se ve a llevar la copa?", "desc" => "La proxima semana tendremos la gran final del mejor torneo del mundo. Quien es su favorito?",
+            $topics[] = array("cat1" => "Sports", "cat2" => "Champions League", "title" => "Quien se va a llevar la copa?", "desc" => "La proxima semana tendremos la gran final del mejor torneo del mundo. Quien es su favorito?",
                 "author" => "ESPN", "people_follow" => 10);
             $topics[] = array("cat1" => "Sports", "cat2" => "Copa Libertadores", "title" => "San Lorenzo a cuartos de final. Este es el a&ntilde;o donde se lleva la copa?", "desc" => "La proxima semana tendremos la gran final del mejor torneo del mundo. Quien es su favorito?",
                 "author" => "ESPN", "people_follow" => 10);
-            $topics[] = array("cat1" => "Sports", "cat2" => "Champions League", "title" => "Quien se ve a llevar la copa?", "desc" => "La proxima semana tendremos la gran final del mejor torneo del mundo. Quien es su favorito?",
+            $topics[] = array("cat1" => "Sports", "cat2" => "Champions League", "title" => "Quien se va a llevar la copa?", "desc" => "La proxima semana tendremos la gran final del mejor torneo del mundo. Quien es su favorito?",
+                "author" => "ESPN", "people_follow" => 10);
+            $topics[] = array("cat1" => "Sports", "cat2" => "Copa Libertadores", "title" => "San Lorenzo a cuartos de final. Este es el a&ntilde;o donde se lleva la copa?", "desc" => "La proxima semana tendremos la gran final del mejor torneo del mundo. Quien es su favorito?",
+                "author" => "ESPN", "people_follow" => 10);
+            $topics[] = array("cat1" => "Sports", "cat2" => "Champions League", "title" => "Quien se va a llevar la copa?", "desc" => "La proxima semana tendremos la gran final del mejor torneo del mundo. Quien es su favorito?",
                 "author" => "ESPN", "people_follow" => 10);
             $topics[] = array("cat1" => "Sports", "cat2" => "Copa Libertadores", "title" => "San Lorenzo a cuartos de final. Este es el a&ntilde;o donde se lleva la copa?", "desc" => "La proxima semana tendremos la gran final del mejor torneo del mundo. Quien es su favorito?",
                 "author" => "ESPN", "people_follow" => 10);
@@ -118,6 +128,8 @@
 
                 <div class="topics-menu">
                     <a href="#" class="active">Topics</a>
+                    <a href="#">Browse</a>
+                    <a href="#">Favorites</a>
                     <a href="#">Suggestions</a>
                 </div>
 
@@ -128,10 +140,15 @@
                         <li class="media">
                             <div class="media-body">
                                 <div class="categories">
-                                    <a href="#"><?php echo $topic['cat1'] ?></a> &raquo; <a href="#"><?php echo $topic['cat2'] ?></a> by <a href="#"><?php echo $topic['author'] ?></a>
-                                    <span class="ago">20 min ago</span>
+                                    <a href="#"><?php echo $topic['cat1'] ?></a> &raquo; <a href="#"><?php echo $topic['cat2'] ?></a></a>
+                                    <div class="ago">20 min ago</div>
                                 </div>
-                                <h4 class="media-heading"><a href="#"><?php echo $topic['title'] ?></a> <?php echo $topic['desc'] ?></h4>
+                                <h4 class="media-heading title"><a href="#"><?php echo $topic['title'] ?></a></h4>
+                                <div class="author"><?php echo $topic['author'] ?>, Periodista de ESPN y ex-futbolista</div>
+                                <div class="desc">
+                                    <?php echo $topic['desc'] ?>
+                                    <?php echo $topic['desc'] ?>
+                                </div>
                                 <div class="info">
                                     <?php /*
                                     <span class="glyphicon glyphicon-heart-empty"></span>

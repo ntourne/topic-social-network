@@ -1,7 +1,7 @@
 body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif,Arial;
     font-size: 13px;
-    /* background-color: #F3F4F6; */
+    background-color: #F3F4F6;
 }
 
 a {
@@ -79,7 +79,7 @@ a {
 }
 .topics-menu a {
     font-weight: normal;
-    margin-right: 10px;
+    margin-right: 28px;
 }
 .topics-menu a:hover {
     text-decoration: none;
@@ -99,7 +99,7 @@ a {
 }
 .topic-list .categories {
     color: #8F8F8F;
-    font-size: 12px;
+    font-size: 11px;
 }
 .topic-list .categories a {
     font-weight: bold;
@@ -107,22 +107,26 @@ a {
 }
 .topic-list .categories .ago {
     padding-left: 15px;
+    float: right;
 }
-.topic-list h4 {
+.topic-list .title {
     margin-top: 5px;
-    font-size: 16px;
+    font-size: 14px;
+    margin-bottom: 4px;
 }
-.topic-list h4 a {
+.topic-list .title a {
     color: #19558d;
+    font-weight: bold;
+}
+.topic-list .author {
     font-weight: bold;
 }
 .topic-list .desc {
     font-size: 14px;
-    padding-bottom: 5px;
 }
 .topic-list .info {
-    margin-top: 5px;
-    padding-top: 4px;
+    margin-top: 3px;
+    padding-top: 2px;
 }
 .topic-list .info .glyphicon {
     font-size: 14px;
